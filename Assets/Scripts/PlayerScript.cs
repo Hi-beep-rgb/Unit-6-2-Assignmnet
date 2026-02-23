@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         isJumping = false;
-        isGrounded = false;
+        isGrounded = true;
 
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
@@ -103,13 +103,13 @@ public class PlayerScript : MonoBehaviour
         if ( rb.linearVelocity.y <-1 )
         {
             //check for oncollision
-
+            isGrounded = false;
             anim.SetBool("isJumping", false);
             isJumping = false;
         }
         else
         {
-
+            isGrounded = true;
         }
 
 
@@ -119,6 +119,12 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject == true)
+        {
+           
+
+        }
         
+        /*bool isGrounded = Physics.Raycast(transform.position, Vector3.down, transform.localScale.y / 2 + 0.5f);*/
     }
 }
