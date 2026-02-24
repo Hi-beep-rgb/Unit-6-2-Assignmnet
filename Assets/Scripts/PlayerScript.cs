@@ -91,15 +91,17 @@ public class PlayerScript : MonoBehaviour
     {
         //if the y velocity is not zero, then play the jump animation
 
-        if (jumpAction.IsPressed() && isJumping==false)
+        if (jumpAction.IsPressed() && isGrounded == true /*isJumping==false*/)
         {
+            isGrounded = false;
+
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 20, rb.linearVelocity.z);
             isJumping = true;
             anim.SetBool("isJumping", true);
 
         }
 
-        //check for the player landing on the ground
+        /*//check for the player landing on the ground
         if ( rb.linearVelocity.y <-1 )
         {
             //check for oncollision
@@ -110,7 +112,7 @@ public class PlayerScript : MonoBehaviour
         else
         {
             isGrounded = true;
-        }
+        }*/
 
 
 
